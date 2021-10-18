@@ -24,16 +24,13 @@ export const Backdrop = () => {
         <Modal.Header closeButton>
           <Modal.Title> Accept geolocation</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don't even try to press
-          escape key.
-        </Modal.Body>
+        <Modal.Body>Do you allow using your current location?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            No
           </Button>
           <Button variant="primary" onClick={handleAccept}>
-            Understood
+            Yes
           </Button>
         </Modal.Footer>
       </Modal>
