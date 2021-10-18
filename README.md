@@ -1,4 +1,4 @@
-# Javascript 05 Project: Weather App!
+# React Test Project: Weather App!
 
 A Weather SPA with React. Connects to the OpenWeather API.
 
