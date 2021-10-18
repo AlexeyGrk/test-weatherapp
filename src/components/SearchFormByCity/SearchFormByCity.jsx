@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import { getWeatherByCity } from "../../services/fetchWeatherApi";
 import { useState, useEffect } from "react";
-import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { InputGroup, FormControl, Button } from "react-bootstrap";
+import {
+  SearchFormByCityNotFoundMessageImg,
+  SearchFormByCityNotFoundMessageContainer,
+  SearchFormByCityNotFoundMessageTitle,
+} from "./SearchFormByCity.styles";
+import NotFoundLocation from "../../images/location-not-found-svgrepo-com.svg";
 
 const SearchFormByCity = ({ setGeolocationInfo }) => {
   const [searchInputValueByCity, setSearchInputValueByCity] = useState("");
@@ -18,7 +24,7 @@ const SearchFormByCity = ({ setGeolocationInfo }) => {
     try {
       getWeatherByCity(searchInputValueByCity).then((res) => {
         if (!res) {
-          setSearchError(true); // обработать ошибку для корректного ввода города
+          setSearchError(true);
         }
         setGeolocationInfo(res);
       });
@@ -43,23 +49,22 @@ const SearchFormByCity = ({ setGeolocationInfo }) => {
             Find
           </Button>
         </InputGroup>
-        {/* 
-        <input
-          className="SearchFormWeatherByCity-input"
-          type="text"
-          autoComplete="off"
-          placeholder="Search weather"
-          name="inputValue"
-        />
-        <button type="submit">Find</button> */}
       </form>
 
-      {searchError && <h1>Not found </h1>}
+      {searchError && (
+        <SearchFormByCityNotFoundMessageContainer>
+          <SearchFormByCityNotFoundMessageTitle>
+            Not found, enter the correct city / area name
+          </SearchFormByCityNotFoundMessageTitle>
+          <SearchFormByCityNotFoundMessageImg src={NotFoundLocation} />
+        </SearchFormByCityNotFoundMessageContainer>
+      )}
     </>
-    //создать тег ошибки и красиво нарисовать
   );
 };
 
-SearchFormByCity.propTypes = {};
+SearchFormByCity.propTypes = {
+  setGeolocationInfo: PropTypes.func,
+};
 
 export default SearchFormByCity;

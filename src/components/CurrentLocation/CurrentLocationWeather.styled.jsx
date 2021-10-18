@@ -45,6 +45,9 @@ export const CurrentLocationWeatherDetailsImage = styled.img`
 export const CurrentLocationWeatherDetailsHumidity = styled.img`
   width: 20px;
 `;
+export const CurrentLocationWeatherDetailsTempImg = styled.img`
+  width: 20px;
+`;
 export const CurrentLocationWeatherDetailsMainInformationItem = styled.p`
   display: flex;
   justify-content: space-between;

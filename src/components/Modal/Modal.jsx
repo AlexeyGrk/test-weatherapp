@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { AcceptGeolocationContext } from "../contexts/AcceptGeolocationContext";
+import { AcceptGeolocationContext } from "../../contexts/AcceptGeolocationContext";
 
 export const Backdrop = () => {
   const [accept, setAccept] = useContext(AcceptGeolocationContext);

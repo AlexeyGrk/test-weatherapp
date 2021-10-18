@@ -1,9 +1,7 @@
+import PropTypes from "prop-types";
 import React, { useEffect, useState, useCallback } from "react";
 import debounce from "lodash.debounce";
-import {
-  getCurrentWeather,
-  getWeatherByCity,
-} from "../../services/fetchWeatherApi";
+import { getCurrentWeather } from "../../services/fetchWeatherApi";
 import SearchFormByCity from "../SearchFormByCity/SearchFormByCity";
 import TempSVG from "../../images/temperature-svgrepo-com.svg";
 import MaxTempSVG from "../../images/thermometer-measuring-ascending-temperature-svgrepo-com.svg";
@@ -22,6 +20,7 @@ import {
   CurrentLocationWeatherDetailsHumidity,
   CurrentLocationWeatherMaxMinTemp,
   CurrentLocationWeatherChangerTemp,
+  CurrentLocationWeatherDetailsTempImg,
 } from "./CurrentLocationWeather.styled";
 
 const CurrentLocation = ({ currentLocation }) => {
@@ -89,17 +88,17 @@ const CurrentLocation = ({ currentLocation }) => {
             </CurrentLocationWeatherDetailsTitle>
             <CurrentLocationWeatherBottomContainer>
               <CurrentLocationWeatherDetailsMainInformationItem>
-                <CurrentLocationWeatherDetailsHumidity src={TempSVG} />
+                <CurrentLocationWeatherDetailsTempImg src={TempSVG} />
                 {Math.round(geolocationInfo.main.temp)} &deg;C
               </CurrentLocationWeatherDetailsMainInformationItem>
               <CurrentLocationWeatherMaxMinTemp>
                 <CurrentLocationWeatherDetailsSecondaryInformationItem>
-                  <CurrentLocationWeatherDetailsHumidity src={MaxTempSVG} />
+                  <CurrentLocationWeatherDetailsTempImg src={MaxTempSVG} />
                   max: {Math.round(geolocationInfo.main.temp_max)} &deg;C &nbsp;
                 </CurrentLocationWeatherDetailsSecondaryInformationItem>
 
                 <CurrentLocationWeatherDetailsSecondaryInformationItem>
-                  <CurrentLocationWeatherDetailsHumidity src={MinTempSVG} />
+                  <CurrentLocationWeatherDetailsTempImg src={MinTempSVG} />
                   min: {Math.round(geolocationInfo.main.temp_min)} &deg;C
                 </CurrentLocationWeatherDetailsSecondaryInformationItem>
               </CurrentLocationWeatherMaxMinTemp>
@@ -108,9 +107,6 @@ const CurrentLocation = ({ currentLocation }) => {
                 <CurrentLocationWeatherDetailsHumidity src={HumiditySVG} />
                 {geolocationInfo.main.humidity}%
               </CurrentLocationWeatherDetailsMainInformationItem>
-              {/* <CurrentLocationWeatherDetailsSecondaryInformationItem>
-                pressure:{geolocationInfo.main.pressure}
-              </CurrentLocationWeatherDetailsSecondaryInformationItem> */}
             </CurrentLocationWeatherBottomContainer>
           </CurrentLocationWeatherDetailsContainer>
         )}
@@ -128,5 +124,7 @@ const CurrentLocation = ({ currentLocation }) => {
     </>
   );
 };
-
+CurrentLocation.propTypes = {
+  currentLocation: PropTypes.object,
+};
 export default CurrentLocation;

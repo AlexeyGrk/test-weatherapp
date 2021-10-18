@@ -1,11 +1,6 @@
 import styled from "@emotion/styled/macro";
 
 export const MainWrapper = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
-
   background-color: #e5e5f7;
   opacity: 0.8;
   background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),

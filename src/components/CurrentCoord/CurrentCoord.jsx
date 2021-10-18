@@ -47,7 +47,7 @@ const CurrentCoord = ({ location, error }) => {
   );
 };
 
-Location.propTypes = {
+CurrentCoord.propTypes = {
   location: PropTypes.object,
   error: PropTypes.string,
 };
